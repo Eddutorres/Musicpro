@@ -1,0 +1,75 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
+{% load static %}
+<!-- naviagtion page start  -->
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0"><a href="{% url 'home' %}">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Descripción del Producto</strong></div>
+      </div>
+    </div>
+  </div>  
+  <!-- naviagtion page end  -->
+
+<!-- Content page -->
+<section class="bg0 p-t-75 p-b-120">
+    <div class="container">
+      <div class="row p-b-148">
+        <div class="col-md-7 col-lg-8">
+          <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+            <h3 class="mtext-111 cl2 p-b-16">
+                Guitarra eléctrica Ibanez RG550 - color Road Flare Red
+            </h3>
+    
+            <p class="stext-113 cl6 p-b-26">
+                La guitarra Ibanez RG550 es un modelo de cuerpo sólido de la serie RG reeditado por Ibanez a finales de 2017. Este modelo es una reedición del RG550 original , que se produjo entre 1987 y 1994.
+
+                Cuello de super mago increíblemente rápido
+                
+                Esta reedición de la guitarra eléctrica Ibanez RG550 lleva su diseño al siguiente nivel con un mástil Super Wizard de arce / nogal de 5 piezas. Podrás ejecutar ejecuciones, arpegios y martillazos ultrarrápidos con facilidad. Cubriendo el mástil Super Wizard hay un diapasón de arce de 24 trastes, cargado con trastes jumbo que son perfectos para curvas de notas grandes. Más allá de eso, la RG550 presenta una articulación de cuello inclinable de estilo clásico con una placa de metal estampada en lugar de la articulación de cuello esculpida All Access que se encuentra en la mayoría de los RG modernos. Si anhelas la sensación de un RG clásico, te encantará el RG550.
+            </p>
+            
+        </div>
+    
+        <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+          <div class="how-bor1 ">
+            
+            <div class="hov-img0">
+              <img src="{% static 'app/images/guitarras/2.jpg' %}" alt="IMG">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        
+        <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+            
+          <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
+            <h3 class="mtext-111 cl2 p-b-16">
+                $1.690.000 CLP
+            </h3>
+            <h3 class="mtext-111 cl2 p-b-16">
+                $1.690.000 USD
+            </h3>
+            <h3 class="mtext-111 cl2 p-b-16">
+                $1.690.000 EUR
+            </h3>
+            <div>
+                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Comprar</button>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      
+    </div>
+    
+    </section>	
+    
+
+
+{% endblock %}
