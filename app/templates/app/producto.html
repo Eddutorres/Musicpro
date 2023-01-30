@@ -5,71 +5,99 @@
 {% load static %}
 <!-- naviagtion page start  -->
 <div class="bg-light py-3">
-    <div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="{% url 'home' %}">Inicio</a> <span class="mx-2 mb-0">/</span> <strong
+          class="text-black">Descripción del Producto</strong></div>
+    </div>
+  </div>
+</div>
+<!-- naviagtion page end  -->
+{% load humanize %}
+{% for p in productos %}
+<div class="page-content">
+  <div class="container">
+    <div class="product-details-top">
       <div class="row">
-        <div class="col-md-12 mb-0"><a href="{% url 'home' %}">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Descripción del Producto</strong></div>
-      </div>
-    </div>
-  </div>  
-  <!-- naviagtion page end  -->
+        <div class="col-md-6">
+          <div class="product-gallery product-gallery-separated">
+            <figure class="product-separated-item">
+              <img src="{{ p.imagen.url }}">
+            </figure>
+          </div><!-- End .product-gallery -->
+        </div><!-- End .col-md-6 -->
 
-<!-- Content page -->
-<section class="bg0 p-t-75 p-b-120">
-    <div class="container">
-      <div class="row p-b-148">
-        <div class="col-md-7 col-lg-8">
-          <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-            <h3 class="mtext-111 cl2 p-b-16">
-                Guitarra eléctrica Ibanez RG550 - color Road Flare Red
-            </h3>
-    
-            <p class="stext-113 cl6 p-b-26">
-                La guitarra Ibanez RG550 es un modelo de cuerpo sólido de la serie RG reeditado por Ibanez a finales de 2017. Este modelo es una reedición del RG550 original , que se produjo entre 1987 y 1994.
+        <div class="col-md-6">
+          <div class="product-details sticky-content">
+            <h1 class="product-title">{{ p.nombre }}</h1><!-- End .product-title -->
 
-                Cuello de super mago increíblemente rápido
-                
-                Esta reedición de la guitarra eléctrica Ibanez RG550 lleva su diseño al siguiente nivel con un mástil Super Wizard de arce / nogal de 5 piezas. Podrás ejecutar ejecuciones, arpegios y martillazos ultrarrápidos con facilidad. Cubriendo el mástil Super Wizard hay un diapasón de arce de 24 trastes, cargado con trastes jumbo que son perfectos para curvas de notas grandes. Más allá de eso, la RG550 presenta una articulación de cuello inclinable de estilo clásico con una placa de metal estampada en lugar de la articulación de cuello esculpida All Access que se encuentra en la mayoría de los RG modernos. Si anhelas la sensación de un RG clásico, te encantará el RG550.
-            </p>
-            
-        </div>
-    
-        <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
-          <div class="how-bor1 ">
-            
-            <div class="hov-img0">
-              <img src="{% static 'app/images/guitarras/2.jpg' %}" alt="IMG">
-            </div>
+
+            <div class="product-details sticky-content">
+              <span class="product-title">$ {{ p.precio | intcomma}} CLP</span>
+            </div><!-- End .product-price -->
+
+            <div class="product-content">
+              <p></p>
+            </div><!-- End .product-content -->
+
+            <div class="product-countdown" data-until="2019, 10, 29"></div><!-- End .product-countdown -->
+
+
+            <div class="details-filter-row details-row-size">
+              <label for="qty">Cantidad:</label>
+              <div class="product-details-quantity">
+                <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0"
+                  required>
+              </div><!-- End .product-details-quantity -->
+            </div><!-- End .details-filter-row -->
+
+            <div class="product-details-action">
+              <a href="#" class="btn-product btn-cart"><span>Agregar al Carro</span></a>
+            </div><!-- End .product-details-action -->
+
+
+
+          <div class="accordion accordion-plus product-details-accordion" id="product-accordion">
+            <div class="card card-box card-sm">
+              <div class="card-header" id="product-desc-heading">
+                <h2 class="card-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" href="#product-accordion-desc"
+                    aria-expanded="false" aria-controls="product-accordion-desc">
+                    Descripción
+                  </a>
+                </h2>
+              </div><!-- End .card-header -->
+              <div id="product-accordion-desc" class="collapse" aria-labelledby="product-desc-heading"
+                data-parent="#product-accordion">
+                <div class="card-body">
+                  <div class="product-desc-content">
+                    <p>{{ p.descripcion }}</p>
+              
+                  </div><!-- End .product-desc-content -->
+                </div><!-- End .card-body -->
+              </div><!-- End .collapse -->
+            </div><!-- End .card -->
+
+
+          </div><!-- End .card-body -->
+
+          <div class="social-icons social-icons-sm">
+            <span class="social-label">Compartir:</span>
+            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+            <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
           </div>
-        </div>
-      </div>
-      
-      <div class="row mt-3">
-        
-        <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
-            
-          <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
-            <h3 class="mtext-111 cl2 p-b-16">
-                $1.690.000 CLP
-            </h3>
-            <h3 class="mtext-111 cl2 p-b-16">
-                $1.690.000 USD
-            </h3>
-            <h3 class="mtext-111 cl2 p-b-16">
-                $1.690.000 EUR
-            </h3>
-            <div>
-                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Comprar</button>
-            </div>
-          </div>
-        </div>
-        
-        
-      </div>
-      
-    </div>
-    
-    </section>	
-    
+        </div><!-- End .product-details-footer -->
+        </div><!-- End .collapse -->
+
+      </div><!-- End .card -->
+    </div><!-- End .accordion -->
+  </div><!-- End .product-details -->
+</div><!-- End .col-md-6 -->
+</div><!-- End .row -->
+</div><!-- End .product-details-top -->
+{% endfor %}
 
 
 {% endblock %}

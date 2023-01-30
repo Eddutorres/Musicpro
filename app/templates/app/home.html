@@ -79,76 +79,40 @@
 
 
 <!-- SLIDER START  -->
+{% load humanize %}
 <div class="site-section block-3 site-blocks-2 bg-light">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-7 site-section-heading text-center pt-4">
-        <h2>Featured Products</h2>
+        <h2>Productos</h2>
       </div>
     </div>
+    
     <div class="row">
       <div class="col-md-12">
         <div class="nonloop-block-3 owl-carousel">
+          {% for p in productos %}
           <div class="item">
             <div class="block-4 text-center">
               <figure class="block-4-image">
-                <img src="{% static 'app/images/guitarras/2.jpg' %}" alt="Image placeholder" class="img-fluid">
+                {% if p.imagen %}
+                <img src="{{ p.imagen.url }}" alt="Image placeholder" class="img-fluid">
+                {% endif %}
               </figure>
               <div class="block-4-text p-4">
-                <h3><a href="{% url 'producto' %}">Gibson</a></h3>
-                <p class="mb-0">Gibson Les Paul Studio - Wine Red</p>
-                <p class="text-primary font-weight-bold">$1.690.000</p>
+                <h3><a>{{ p.marca }}</a></h3>
+                <form action="{% url 'producto' %}">
+                <input type="hidden" name="sku" id="sku" value="{{ p.SKU }}">
+                <h5><a>{{ p.nombre }}</a></h5>
+                
+                <p class="text-primary font-weight-bold">${{ p.precio | intcomma }}</p>
+                <input type="submit" value="Detalles">
+                </form>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="block-4 text-center">
-              <figure class="block-4-image">
-                <img src="{% static 'app/images/baterias/2.jpeg' %}" alt="Image placeholder" class="img-fluid">
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="#">Tama</a></h3>
-                <p class="mb-0">Batería acústica Tama Stagestar SG52KH4C - color Black - con platillos</p>
-                <p class="text-primary font-weight-bold">$739.900</p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="block-4 text-center">
-              <figure class="block-4-image">
-                <img src="{% static 'app/images/bajos/2.jpg' %}" alt="Image placeholder" class="img-fluid">
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="#">Ibanez</a></h3>
-                <p class="mb-0">Bajo eléctrico Ibanez SR1345B 5 cuerdas - Dual Shadow Burst Flat</p>
-                <p class="text-primary font-weight-bold">$1.649.900</p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="block-4 text-center">
-              <figure class="block-4-image">
-                <img src="{% static 'app/images/amplificadores/2.jpg' %}" alt="Image placeholder" class="img-fluid">
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="#">Roland</a></h3>
-                <p class="mb-0">Amplificador de guitarra Roland JC-120 - 120W Jazz Chorus</p>
-                <p class="text-primary font-weight-bold">$1.239.900</p>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="block-4 text-center">
-              <figure class="block-4-image">
-                <img src="{% static 'app/images/guitarras/3.jpg' %}" alt="Image placeholder" class="img-fluid">
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a href="{% url 'producto' %}">Ibanez</a></h3>
-                <p class="mb-0">Guitarra eléctrica Ibanez RG550 - color Road Flare Red</p>
-                <p class="text-primary font-weight-bold">$1.089.900</p>
-              </div>
-            </div>
-          </div>
+          
+    {% endfor %}      
         </div>
       </div>
     </div>

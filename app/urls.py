@@ -1,6 +1,12 @@
 from django import views
-from django.urls import path
-from .views import euro, home, contacto, catalogo, nosotros, producto
+from django.urls import path, include
+from .views import euro, home, contacto, catalogo, nosotros, producto, ProductoViewset
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register('producto', ProductoViewset)
+
 
 urlpatterns = [
     path('', home, name="home"),
@@ -9,4 +15,5 @@ urlpatterns = [
     path('nosotros', nosotros, name="nosotros"),
     path('producto', producto, name="producto"),
     path('euro', euro, name='euro'),
+    path('api/', include(router.urls)),
 ]
