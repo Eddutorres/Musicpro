@@ -1,6 +1,54 @@
 {% extends 'app/base.html' %}
 
 {% block contenido %}
+{% load humanize %}
 
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0"><a href="{% url 'home' %}">Inicio</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Catálogo</strong></div>
+      </div>
+    </div>
+  </div>
+
+<div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7 site-section-heading text-center pt-4">
+          <h2>Productos</h2>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nonloop-block-3 owl-carousel">
+            {% for p in productos %}
+            <div class="item">
+              <div class="block-4 text-center">
+                <figure class="block-4-image">
+                  {% if p.imagen %}
+                  <img src="{{ p.imagen.url }}" alt="Image placeholder" class="img-fluid">
+                  {% endif %}
+                </figure>
+                <div class="block-4-text p-4">
+                  <h3><a>{{ p.marca }}</a></h3>
+                  <form action="{% url 'producto' %}">
+                  <input type="hidden" name="sku" id="sku" value="{{ p.SKU }}">
+                  <h5><a>{{ p.nombre }}</a></h5>
+                  
+                  <p class="text-primary font-weight-bold">${{ p.precio | intcomma }}</p>
+                  <input type="submit" value="Detalles">
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+      {% endfor %}      
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SLIDER END  -->
 
 {% endblock %}

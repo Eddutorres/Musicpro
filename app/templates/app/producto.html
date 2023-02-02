@@ -42,53 +42,51 @@
 
             <div class="product-countdown" data-until="2019, 10, 29"></div><!-- End .product-countdown -->
 
-
+            <form action="{% url 'carro' %}">
             <div class="details-filter-row details-row-size">
               <label for="qty">Cantidad:</label>
               <div class="product-details-quantity">
-                <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0"
+                <input type="number" name="qty" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0"
                   required>
               </div><!-- End .product-details-quantity -->
             </div><!-- End .details-filter-row -->
-
-            <div class="product-details-action">
-              <a href="#" class="btn-product btn-cart"><span>Agregar al Carro</span></a>
-            </div><!-- End .product-details-action -->
-
+            <input type="hidden" name="sku" id="sku" value="{{ p.SKU }}">
+            <input type="submit" value="Agregar al carro">
+            </form>
 
 
-          <div class="accordion accordion-plus product-details-accordion" id="product-accordion">
-            <div class="card card-box card-sm">
-              <div class="card-header" id="product-desc-heading">
-                <h2 class="card-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" href="#product-accordion-desc"
-                    aria-expanded="false" aria-controls="product-accordion-desc">
-                    Descripción
-                  </a>
-                </h2>
-              </div><!-- End .card-header -->
-              <div id="product-accordion-desc" class="collapse" aria-labelledby="product-desc-heading"
-                data-parent="#product-accordion">
-                <div class="card-body">
-                  <div class="product-desc-content">
-                    <p>{{ p.descripcion }}</p>
-              
-                  </div><!-- End .product-desc-content -->
-                </div><!-- End .card-body -->
-              </div><!-- End .collapse -->
-            </div><!-- End .card -->
+            <div class="accordion accordion-plus product-details-accordion" id="product-accordion">
+              <div class="card card-box card-sm">
+                <div class="card-header" id="product-desc-heading">
+                  <h2 class="card-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" href="#product-accordion-desc"
+                      aria-expanded="false" aria-controls="product-accordion-desc">
+                      Descripción
+                    </a>
+                  </h2>
+                </div><!-- End .card-header -->
+                <div id="product-accordion-desc" class="collapse" aria-labelledby="product-desc-heading"
+                  data-parent="#product-accordion">
+                  <div class="card-body">
+                    <div class="product-desc-content">
+                      <p>{{ p.descripcion }}</p>
+
+                    </div><!-- End .product-desc-content -->
+                  </div><!-- End .card-body -->
+                </div><!-- End .collapse -->
+              </div><!-- End .card -->
 
 
-          </div><!-- End .card-body -->
+            </div><!-- End .card-body -->
 
-          <div class="social-icons social-icons-sm">
-            <span class="social-label">Compartir:</span>
-            <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-            <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-            <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-            <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-          </div>
-        </div><!-- End .product-details-footer -->
+            <div class="social-icons social-icons-sm">
+              <span class="social-label">Compartir:</span>
+              <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+              <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+              <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+              <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+            </div>
+          </div><!-- End .product-details-footer -->
         </div><!-- End .collapse -->
 
       </div><!-- End .card -->

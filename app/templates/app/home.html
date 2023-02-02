@@ -20,19 +20,19 @@
   </div>
   <div class="row">
       <div class="col-12 col-md-4 p-5 mt-3">
-          <a href="#"><img src="{% static 'app/images/guitarras/1.jpg' %}" class="rounded-circle img-fluid border imgshow m-auto"></a>
+          <a href="{% url 'catalogo' %}"><img src="{% static 'app/images/guitarras/1.jpg' %}" class="rounded-circle img-fluid border imgshow m-auto"></a>
           <h5 class="text-center mt-3 mb-3">Guitarras Eléctricas</h5>
-          <p class="text-center"><a class="btn btn-primary text-light">Revisar Catálogo</a></p>
+          <p class="text-center"><a class="btn btn-primary text-light" href="{% url 'catalogo' %}">Revisar Catálogo</a></p>
       </div>
       <div class="col-12 col-md-4 p-5 mt-3">
-          <a href="#"><img src="{% static 'app/images/baterias/1.jpg' %}" class="rounded-circle img-fluid border imgshow"></a>
+          <a href="{% url 'catalogo' %}"><img src="{% static 'app/images/baterias/1.jpg' %}" class="rounded-circle img-fluid border imgshow"></a>
           <h2 class="h5 text-center mt-3 mb-3">Baterías</h2>
-          <p class="text-center"><a class="btn btn-primary text-light">Revisar Catálogo</a></p>
+          <p class="text-center"><a class="btn btn-primary text-light" href="{% url 'catalogo' %}">Revisar Catálogo</a></p>
       </div>
       <div class="col-12 col-md-4 p-5 mt-3">
-          <a href="#"><img src="{% static 'app/images/amplificadores/1.jpg' %}" class="rounded-circle img-fluid border imgshow"></a>
+          <a href="{% url 'catalogo' %}"><img src="{% static 'app/images/amplificadores/1.jpg' %}" class="rounded-circle img-fluid border imgshow"></a>
           <h2 class="h5 text-center mt-3 mb-3">Amplificadores</h2>
-          <p class="text-center"><a class="btn btn-primary text-light">Revisar Catálogo</a></p>
+          <p class="text-center"><a class="btn btn-primary text-light" href="{% url 'catalogo' %}">Revisar Catálogo</a></p>
       </div>
   </div>
 </section>
@@ -77,47 +77,5 @@
   <!-- SERVICES END   -->
 
 
-
-<!-- SLIDER START  -->
-{% load humanize %}
-<div class="site-section block-3 site-blocks-2 bg-light">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-7 site-section-heading text-center pt-4">
-        <h2>Productos</h2>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-md-12">
-        <div class="nonloop-block-3 owl-carousel">
-          {% for p in productos %}
-          <div class="item">
-            <div class="block-4 text-center">
-              <figure class="block-4-image">
-                {% if p.imagen %}
-                <img src="{{ p.imagen.url }}" alt="Image placeholder" class="img-fluid">
-                {% endif %}
-              </figure>
-              <div class="block-4-text p-4">
-                <h3><a>{{ p.marca }}</a></h3>
-                <form action="{% url 'producto' %}">
-                <input type="hidden" name="sku" id="sku" value="{{ p.SKU }}">
-                <h5><a>{{ p.nombre }}</a></h5>
-                
-                <p class="text-primary font-weight-bold">${{ p.precio | intcomma }}</p>
-                <input type="submit" value="Detalles">
-                </form>
-              </div>
-            </div>
-          </div>
-          
-    {% endfor %}      
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- SLIDER END  -->
 
 {% endblock %}

@@ -14,11 +14,12 @@ class Marca(models.Model):
         return self.nombre
 
 class Cliente(models.Model):
+    id_cli = models.IntegerField(primary_key=True, default='1')
     nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
+    ap_pater_cli = models.CharField(max_length=50, null=True)
+    ap_mater_cli = models.CharField(max_length=50, null=True)
     rut = models.CharField(max_length=20)
     direccion = models.TextField()
-    registrado = models.BooleanField()
 
     def __str__(self):
         return self.nombre
@@ -28,7 +29,7 @@ class Cliente(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=60)
     descripcion = models.TextField()
-    SKU = models.CharField(max_length=20)
+    SKU = models.CharField(max_length=20, primary_key=True)
     precio = models.IntegerField()
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
     marca = models.ForeignKey(Marca, on_delete=models.PROTECT, null=True)
@@ -37,42 +38,21 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
-class Venta(models.Model):
+class Factura(models.Model):
+    id_factura = models.IntegerField(primary_key=True)
     fecha = models.DateField()
-    producto = models.ForeignKey(Producto, on_delete=models.PROTECT)
-    cant_productos = models.IntegerField()
-    tipo_tarjeta = models.CharField(max_length=20)
+    id_cli = models.ForeignKey(Cliente, on_delete=models.PROTECT)
     total = models.IntegerField()
 
     def __str__(self):
-        return self.fecha
+        return self.id_factura
 
-class Boleta(models.Model):
-    fecha = models.DateField()
-    num_boleta = models.IntegerField()
-    total = models.IntegerField()
-    venta = models.ForeignKey(Venta, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.num_boleta
-
-class Bodegero(models.Model):
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    rut = models.CharField(max_length=20)
+class Detalle_factura(models.Model):
+    id_detalle = models.IntegerField(primary_key=True)
+    id_factura = models.ForeignKey(Factura, on_delete=models.PROTECT)
+    SKU = models.ForeignKey(Producto, on_delete=models.PROTECT )
+    cantidad = models.IntegerField()
 
     def __str__(self):
-        return self.nombre
+        return self.id_detalle
 
-class Entrega(models.Model):
-    fecha_entrega = models.DateField()
-    boleta = models.ForeignKey(Boleta, on_delete=models.PROTECT)
-    id_venta = models.ForeignKey(Venta, on_delete=models.PROTECT)
-    rut_cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
-    rut_bodeguero = models.ForeignKey(Bodegero, on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.fecha_entrega
-
-    
-    
